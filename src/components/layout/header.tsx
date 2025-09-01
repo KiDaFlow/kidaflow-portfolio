@@ -45,10 +45,11 @@ export function Header() {
             to="/" 
             className="flex items-center space-x-2 font-heading font-bold text-xl text-foreground hover:text-primary transition-colors"
           >
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-sm">
-              K
-            </div>
-            <span>KiDaFlow</span>
+            <img 
+              src="/lovable-uploads/156c7f90-fcda-443e-8aa8-1407b7dc910c.png" 
+              alt="KiDaFlow" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

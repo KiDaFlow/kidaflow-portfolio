@@ -18,10 +18,10 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
   // Convert video URLs to embeddable format
   const getEmbedUrl = (url: string, type: "loom" | "youtube") => {
     if (type === "youtube") {
-      const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/)?.[1];
-      return videoId ? `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1` : null;
+      const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1];
+      return videoId ? `https://www.youtube.com/embed/${videoId}?si=ZtB1tFChTsqdXmoO` : null;
     } else if (type === "loom") {
-      const videoId = url.match(/loom\.com\/share\/([^/?]+)/)?.[1];
+      const videoId = url.match(/loom\.com\/share\/([^/?&\n\r]+)/)?.[1];
       return videoId ? `https://www.loom.com/embed/${videoId}` : null;
     }
     return null;
@@ -68,7 +68,10 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
         <iframe
           src={embedUrl}
           title={title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          width="560"
+          height="315"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
           className="w-full h-full"
           loading="lazy"
