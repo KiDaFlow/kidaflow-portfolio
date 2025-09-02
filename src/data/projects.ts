@@ -41,15 +41,15 @@ export const projects: Project[] = [
   },
   {
     id: "legal-ocr-whatsapp",
-    title: "Legal Firms – OCR + WhatsApp Intake with GoHighLevel",
+    title: "Automate OCR + Whatsapp + GoHighlevel for Legal Firms (Harry AAB)",
     shortSummary: "End-to-end intake: WhatsApp uploads → OCR → structured data → validation → CRM. Reduces manual document reading.",
     longDescription: "Clients upload IDs, proof of address, and statements via WhatsApp. n8n orchestrates Mistral OCR, validates quality, extracts fields (name, DOB, address, doc type, amounts), normalises data, and populates the CRM. Blurry or incomplete docs trigger re-upload prompts for clean pipelines.",
     tags: ["Agents", "Ops", "OCR", "WhatsApp", "CRM"],
     tools: ["n8n", "Mistral OCR", "WhatsApp", "GoHighLevel"],
     video: {
-      type: "youtube",
-      url: "https://youtu.be/nQDzI34rgEE",
-      fallbackUrl: "https://youtu.be/nQDzI34rgEE"
+      type: "loom",
+      url: "https://www.loom.com/share/27f31a035f894258b41e435431216670?sid=612b4ede-7d34-4c49-95a4-97003048c7ff",
+      fallbackUrl: "https://drive.google.com/file/d/10my-vKwXjsvkbysmqvUZFtBrsdho7qSE/view"
     },
     screenshots: [],
     testimonial: {
