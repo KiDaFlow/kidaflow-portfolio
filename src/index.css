@@ -18,14 +18,14 @@
     --surface-foreground: 220 15% 10%;
     
     /* Interactive colors */
-    --primary: 200 100% 50%;  /* Electric blue */
+    --primary: 142 76% 36%;  /* KiDaFlow green */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 200 100% 60%;
+    --primary-glow: 142 76% 46%;
     
     --secondary: 220 10% 96%;
     --secondary-foreground: 220 15% 20%;
     
-    --accent: 185 84% 45%;  /* Teal */
+    --accent: 158 64% 52%;  /* Lighter green accent */
     --accent-foreground: 0 0% 100%;
     
     /* Semantic colors */
@@ -34,7 +34,7 @@
     
     --border: 220 15% 90%;
     --input: 220 15% 90%;
-    --ring: 200 100% 50%;
+    --ring: 142 76% 36%;
     
     /* Component colors */
     --popover: 0 0% 100%;
@@ -77,14 +77,14 @@
     --surface-foreground: 220 10% 92%;
     
     /* Interactive colors - maintain same primary/accent */
-    --primary: 200 100% 55%;
+    --primary: 142 76% 42%;
     --primary-foreground: 220 25% 6%;
-    --primary-glow: 200 100% 65%;
+    --primary-glow: 142 76% 52%;
     
     --secondary: 220 15% 15%;
     --secondary-foreground: 220 10% 80%;
     
-    --accent: 185 84% 50%;
+    --accent: 158 64% 58%;
     --accent-foreground: 220 25% 6%;
     
     /* Semantic colors */
@@ -93,7 +93,7 @@
     
     --border: 220 15% 20%;
     --input: 220 15% 20%;
-    --ring: 200 100% 55%;
+    --ring: 142 76% 42%;
     
     /* Component colors */
     --popover: 220 20% 8%;

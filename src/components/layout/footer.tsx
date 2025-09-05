@@ -59,24 +59,26 @@ export function Footer() {
                 <span>hello@kidaflow.com</span>
               </a>
               <a 
-                href="tel:+1234567890" 
+                href="https://api.whatsapp.com/send/?phone=254105430486" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
               >
                 <Phone className="h-4 w-4" />
-                <span>+1 (234) 567-890</span>
+                <span>+254 105 430 486</span>
               </a>
             </div>
             
             {/* Social Links */}
             <div className="flex space-x-2">
               <Button variant="ghost" size="sm" className="w-9 h-9 p-0" asChild>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.youtube.com/@kidaflowautomations" target="_blank" rel="noopener noreferrer">
                   <Youtube className="h-4 w-4" />
                   <span className="sr-only">YouTube</span>
                 </a>
               </Button>
               <Button variant="ghost" size="sm" className="w-9 h-9 p-0" asChild>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/company/kidaflow" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-4 w-4" />
                   <span className="sr-only">LinkedIn</span>
                 </a>
