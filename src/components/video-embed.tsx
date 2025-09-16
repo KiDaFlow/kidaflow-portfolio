@@ -19,7 +19,9 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
   const getEmbedUrl = (url: string, type: "loom" | "youtube") => {
     if (type === "youtube") {
       const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1];
-      return videoId ? `https://www.youtube.com/embed/${videoId}?si=ZtB1tFChTsqdXmoO` : null;
+      const siMatch = url.match(/[?&]si=([^&\n?#]+)/);
+      const si = siMatch ? siMatch[1] : 'x101t5VaG7X3DCeC';
+      return videoId ? `https://www.youtube.com/embed/${videoId}?si=${si}` : null;
     } else if (type === "loom") {
       // Extract video ID from Loom URL, handling both with and without query parameters
       const videoId = url.match(/loom\.com\/share\/([^/?&\n\r]+)/)?.[1];
@@ -64,8 +66,8 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
     <div className="space-y-4">
       <div className="bg-muted rounded-lg overflow-hidden border border-border">
         {video.type === "loom" ? (
-          // Use proper Loom embedding format
-          <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+          // Use exact Loom embedding structure as specified
+          <div style={{ position: 'relative', paddingBottom: '46.09625668449198%', height: 0 }}>
             {!isLoaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-muted">
                 <div className="text-center space-y-2">
@@ -93,7 +95,7 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
             />
           </div>
         ) : (
-          // YouTube embedding
+          // Use exact YouTube embedding structure as specified
           <div className="aspect-video">
             {!isLoaded && (
               <div className="w-full h-full flex items-center justify-center">
@@ -104,10 +106,11 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
               </div>
             )}
             <iframe
-              src={embedUrl}
-              title={title}
               width="560"
               height="315"
+              src={embedUrl}
+              title="YouTube video player"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
