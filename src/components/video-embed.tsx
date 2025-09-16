@@ -18,15 +18,18 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
   // Convert video URLs to embeddable format
   const getEmbedUrl = (url: string, type: "loom" | "youtube") => {
     if (type === "youtube") {
+      // Handle various YouTube URL formats
       const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1];
-      const siMatch = url.match(/[?&]si=([^&\n?#]+)/);
-      const si = siMatch ? siMatch[1] : 'x101t5VaG7X3DCeC';
-      return videoId ? `https://www.youtube.com/embed/${videoId}?si=${si}` : null;
+      if (videoId) {
+        // Use the default si parameter for YouTube embeds
+        return `https://www.youtube.com/embed/${videoId}?si=x101t5VaG7X3DCeC`;
+      }
+      return null;
     } else if (type === "loom") {
-      // Extract video ID from Loom URL, handling both with and without query parameters
+      // Extract video ID from Loom URL
       const videoId = url.match(/loom\.com\/share\/([^/?&\n\r]+)/)?.[1];
       if (videoId) {
-        // Extract sid parameter if present for better embedding
+        // Extract sid parameter if present, otherwise use empty string
         const sidMatch = url.match(/[?&]sid=([^&\n\r]+)/);
         const sid = sidMatch ? sidMatch[1] : '';
         return `https://www.loom.com/embed/${videoId}${sid ? `?sid=${sid}` : ''}`;
@@ -78,10 +81,8 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
             )}
             <iframe
               src={embedUrl}
-              title={title}
               frameBorder="0"
               allowFullScreen
-              loading="lazy"
               onLoad={() => setIsLoaded(true)}
               onError={() => setHasError(true)}
               style={{ 
@@ -96,9 +97,9 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
           </div>
         ) : (
           // Use exact YouTube embedding structure as specified
-          <div className="aspect-video">
+          <div className="aspect-video relative">
             {!isLoaded && (
-              <div className="w-full h-full flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center bg-muted">
                 <div className="text-center space-y-2">
                   <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
                   <p className="text-sm text-muted-foreground">Loading video...</p>
@@ -114,11 +115,16 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
-              className="w-full h-full"
-              loading="lazy"
               onLoad={() => setIsLoaded(true)}
               onError={() => setHasError(true)}
-              style={{ display: isLoaded ? 'block' : 'none' }}
+              style={{ 
+                position: 'absolute', 
+                top: 0, 
+                left: 0, 
+                width: '100%', 
+                height: '100%',
+                display: isLoaded ? 'block' : 'none'
+              }}
             />
           </div>
         )}
