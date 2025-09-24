@@ -28,10 +28,11 @@ const Contact = () => {
         budget: formData.get('budget') as string,
       };
 
-      const response = await fetch('/api/send-contact-email', {
+      const response = await fetch('https://enjgikxatnmofnqecwer.supabase.co/functions/v1/send-contact-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVuamdpa3hhdG5tb2ZucWVjd2VyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcxNzI0ODYsImV4cCI6MjA0Mjc0ODQ4Nn0.uj9SQHZvIIhRkXD6iZTaRIL3mJHtKLn6y0yrAhxvV8w'}`,
         },
         body: JSON.stringify(data),
       });
