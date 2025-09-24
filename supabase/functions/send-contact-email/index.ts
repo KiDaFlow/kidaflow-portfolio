@@ -49,7 +49,7 @@ serve(async (req) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "hello@kidaflow.com",
+        from: "aspectrandy@gmail.com",
         to: ["kidaflowautomations@gmail.com"],
         subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
         html: emailHtml,
