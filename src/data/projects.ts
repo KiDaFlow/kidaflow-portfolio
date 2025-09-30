@@ -223,6 +223,28 @@ export const projects: Project[] = [
       "Built to reduce staffing needs and scale service businesses"
     ],
     featured: true
+  },
+  {
+    id: "cold-email-personalization",
+    title: "AI-Powered Cold Email Personalization System",
+    shortSummary: "An automation that scrapes real prospect data and generates thousands of personalized cold emails in minutes. Helps agencies, B2B teams, and founders boost reply rates, book more calls, and scale outreach effortlessly.",
+    longDescription: "This system solves one of the toughest challenges in cold outreach: low reply rates caused by generic, copy-paste emails. Using real data scraped from platforms like Instagram, Facebook, TikTok, and LinkedIn, it automatically generates thousands of highly personalized emails that feel researched and relevant. Instead of blasting the same message to every prospect, this automation tailors each email with details such as follower counts, ad spend breakdowns, competitor analysis, and brand-specific insights. The result is higher engagement, stronger credibility, and faster deal flow. In one case study, a digital marketing agency scaled from 0 to 500 personalized emails per day in under two weeks, sending over 2,000 emails in just four days. Reply rates and conversions jumped, proving that relevance and personalization drive real ROI. The workflow runs automatically overnight, so by morning, your inbox is filled with demos, calls, and warm leads. Outreach that used to take hours now happens in minutes — freeing you to focus on growth instead of repetitive tasks.",
+    tags: ["Email", "Personalization", "Automation", "Lead Gen", "Outreach"],
+    tools: ["n8n", "OpenAI", "Instagram API", "Facebook Ads Library", "LinkedIn"],
+    video: {
+      type: "youtube",
+      url: "https://youtu.be/CtWtVXwWytk",
+      fallbackUrl: "https://youtu.be/CtWtVXwWytk"
+    },
+    screenshots: [],
+    outcomes: [
+      "Scrapes real-time prospect data (Instagram, TikTok, Facebook Ads Library, LinkedIn)",
+      "Generates thousands of unique, personalized cold emails instantly",
+      "Automates daily outreach schedules (e.g., 2:00 a.m. runs)",
+      "Proven to boost reply rates and reduce spam flagging",
+      "Scales from 0 to 500+ emails/day with minimal setup"
+    ],
+    featured: true
   }
 ];
 
