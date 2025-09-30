@@ -201,6 +201,28 @@ export const projects: Project[] = [
       fallbackUrl: "https://www.loom.com/share/26f80efe0c0d483a90faea48c3678b9c"
     },
     screenshots: []
+  },
+  {
+    id: "automated-customer-booking",
+    title: "Automated Customer Booking System",
+    shortSummary: "A 24/7 automated booking system powered by chatbots and calendar integrations. Customers can create, cancel, and reschedule appointments instantly across WhatsApp, Slack, or web chat, eliminating front-desk bottlenecks and scaling operations without extra staff.",
+    longDescription: "An automated customer booking system that can handle unlimited bookings for your business, running 24/7. It validates customer details, manages calendars across multiple operators, and processes bookings, reschedules, and cancellations seamlessly. The system works across chat platforms like WhatsApp, Slack, and web widgets. It ensures timezone accuracy, supports unlimited scale, and reduces workload by eliminating front-desk bottlenecks. This automation is especially powerful for service-based businesses such as salons, barbershops, dental clinics, and hotels. Built from 200+ automation systems deployed over 6 months, saving clients time, reducing costs, and unlocking new revenue.",
+    tags: ["Booking", "Agents", "Automation", "WhatsApp", "Service"],
+    tools: ["n8n", "Cal.com", "WhatsApp", "Slack", "OpenAI"],
+    video: {
+      type: "youtube",
+      url: "https://youtu.be/qe38n4yPG5E",
+      fallbackUrl: "https://youtu.be/qe38n4yPG5E"
+    },
+    screenshots: [],
+    outcomes: [
+      "Automated 24/7 customer bookings with chatbot + calendar",
+      "Create, reschedule, and cancel bookings instantly",
+      "Works across WhatsApp, Slack, website chat, or voice integrations",
+      "Supports timezone syncing and unlimited operators",
+      "Built to reduce staffing needs and scale service businesses"
+    ],
+    featured: true
   }
 ];
 
