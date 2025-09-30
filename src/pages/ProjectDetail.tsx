@@ -136,7 +136,23 @@ const ProjectDetail = () => {
               <CardContent>
                 <div className="prose prose-lg max-w-none text-foreground">
                   <p className="text-muted-foreground leading-relaxed">
-                    {project.longDescription}
+                    {project.longDescription.split(/(https?:\/\/[^\s]+)/g).map((part, index) => {
+                      if (part.match(/^https?:\/\//)) {
+                        return (
+                          <a
+                            key={index}
+                            href={part}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:text-primary/80 underline inline-flex items-center gap-1"
+                          >
+                            {part}
+                            <ExternalLink className="h-3 w-3" />
+                          </a>
+                        );
+                      }
+                      return part;
+                    })}
                   </p>
                 </div>
               </CardContent>
