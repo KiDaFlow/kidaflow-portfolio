@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Youtube, Linkedin, Twitter, MessageCircle } from "lucide-react";
+import { Mail, Phone, Youtube, Linkedin, Twitter, MessageCircle, Github } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -93,6 +93,12 @@ export function Footer() {
                 <a href="https://api.whatsapp.com/send/?phone=254105430486" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="h-4 w-4" />
                   <span className="sr-only">WhatsApp</span>
+                </a>
+              </Button>
+              <Button variant="ghost" size="sm" className="w-9 h-9 p-0" asChild>
+                <a href="https://www.upwork.com/freelancers/~0120cdc3c97af141a4?mp_source=share" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-4 w-4" />
+                  <span className="sr-only">Upwork</span>
                 </a>
               </Button>
             </div>
