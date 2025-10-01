@@ -245,6 +245,28 @@ export const projects: Project[] = [
       "Scales from 0 to 500+ emails/day with minimal setup"
     ],
     featured: true
+  },
+  {
+    id: "coaching-assistant-automation",
+    title: "$10k/m Simple 24/7 Coaching Assistant (Copy This)",
+    shortSummary: "A 24/7 AI coaching assistant that turns your playbooks, frameworks, and methods into a digital system. Clients get instant answers in your voice while you scale without burnout.",
+    longDescription: "This system transforms your coaching knowledge, frameworks, and playbooks into a 24/7 digital assistant that answers client questions in your own brand voice.\n\nEvery coach faces the same bottleneck: clients ask the same 20 questions repeatedly. Scaling from 10 clients to hundreds or thousands makes this unsustainable. This automation eliminates repetition by delivering instant, high-quality answers any time of day.\n\nHow it works:\n- Slack integration so clients ask questions in a familiar space\n- Airtable handles identity mapping for personalized replies\n- Supabase stores your proprietary methods and playbooks, ensuring responses are accurate and brand-authentic\n- Built with n8n automation to connect everything seamlessly\n\nExample: For Antifragile Academy, we uploaded a 165-page knowledge base of research and exercises. Now, athletes ask about breathing techniques or distraction handling and receive detailed, step-by-step responses consistent with the coach's teachings.\n\nBenefits for coaches and consultants:\n- Save hours weekly by eliminating repetitive explanations\n- Guarantee consistent, detailed answers regardless of time or workload\n- Scale effortlessly from 10 clients to 1,000+ without losing quality\n- Free up energy for deeper, higher-value live coaching\n\nThis is not about AI replacing coaches. It's about AI scaling coaches—giving every client instant, contextual answers while you focus on transformation.\n\nWorkflow template available at: https://kidaflow.gumroad.com/l/jgrmr",
+    tags: ["Coaching", "AI", "Automation", "Slack", "Agents"],
+    tools: ["n8n", "Slack", "Airtable", "Supabase", "OpenAI"],
+    video: {
+      type: "youtube",
+      url: "https://youtu.be/srg2dLgO8zI",
+      fallbackUrl: "https://youtu.be/srg2dLgO8zI"
+    },
+    screenshots: [],
+    outcomes: [
+      "24/7 AI coaching assistant built with n8n + Slack",
+      "Personalized responses mapped to client identity",
+      "Knowledge base loaded with your proprietary methods (Supabase)",
+      "Guarantees consistent, brand-authentic answers",
+      "Proven for coaches, consultants, and professional programs"
+    ],
+    featured: true
   }
 ];
 
