@@ -26,7 +26,7 @@ export const projects: Project[] = [
     id: "akwaaba-social-automation",
     title: "Akwaaba App – Social Posting Automation",
     shortSummary: "Automated Twitter threads and LinkedIn posts using Google Sheets as the content hub, Buffer for scheduling, and OpenAI for copy tweaks.",
-    longDescription: "We replaced manual scheduling and VA dependency with a resilient pipeline: Sheets → OpenAI enrichment → Buffer scheduling for Twitter and LinkedIn. Runs daily on a timed schedule with error visibility and simple content operations.",
+    longDescription: "Replaced manual scheduling and VA dependency with a resilient automated pipeline that handles social media posting across Twitter and LinkedIn.\n\nHow it works:\n- Google Sheets acts as the central content hub\n- OpenAI enriches and optimizes copy automatically\n- Buffer handles scheduling for both platforms\n- Runs daily on a timed schedule with full error visibility\n\nSimple content operations with complete automation, eliminating the need for manual intervention while maintaining high-quality, consistent posting.",
     tags: ["Content", "Scheduling", "Social"],
     tools: ["Make", "Buffer", "OpenAI", "Google Sheets"],
     video: {
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     id: "legal-ocr-whatsapp",
     title: "Automate OCR + Whatsapp + GoHighlevel for Legal Firms (Harry AAB)",
     shortSummary: "End-to-end intake: WhatsApp uploads → OCR → structured data → validation → CRM. Reduces manual document reading.",
-    longDescription: "Clients upload IDs, proof of address, and statements via WhatsApp. n8n orchestrates Mistral OCR, validates quality, extracts fields (name, DOB, address, doc type, amounts), normalises data, and populates the CRM. Blurry or incomplete docs trigger re-upload prompts for clean pipelines.",
+    longDescription: "Complete document intake automation that transforms how legal firms collect and process client documents via WhatsApp.\n\nThe workflow:\n- Clients upload IDs, proof of address, and statements directly through WhatsApp\n- n8n orchestrates Mistral OCR to extract document data\n- System validates document quality automatically\n- Extracts key fields: name, DOB, address, document type, amounts\n- Normalizes data and populates GoHighLevel CRM instantly\n\nBlurry or incomplete documents trigger automatic re-upload prompts, ensuring clean data pipelines and reducing manual review time from hours to minutes.",
     tags: ["Agents", "Ops", "OCR", "WhatsApp", "CRM"],
     tools: ["n8n", "Mistral OCR", "WhatsApp", "GoHighLevel"],
     video: {
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     id: "ai-voice-plumbing",
     title: "AI Voice Agent for Plumbing (ServiceTitan ↔ Zapier ↔ GHL / Retell ↔ n8n)",
     shortSummary: "Booking + price enquiries via AI voice. Two variants shipped: GHL+Zapier and Retell+n8n, integrated with ServiceTitan.",
-    longDescription: "An AI voice agent that captures caller context, confirms details, estimates ranges, and books slots. Webhooks push transcripts and structured call data to the CRM/Sheets. Designed for service businesses; swappable CRM and knowledge base.",
+    longDescription: "AI voice agent that handles customer calls, price inquiries, and appointment bookings automatically for service businesses.\n\nCapabilities:\n- Captures caller context and confirms service details\n- Provides accurate price estimates and ranges\n- Books appointment slots in real-time\n- Pushes call transcripts and structured data to CRM\n- Integrates seamlessly with ServiceTitan\n\nShipped in two variants (GHL+Zapier and Retell+n8n) with swappable CRM and knowledge base. Perfect for plumbing, HVAC, and other service industries needing 24/7 call handling.",
     tags: ["AI Voice", "Booking", "CRM", "Service"],
     tools: ["Retell", "n8n", "GoHighLevel", "Zapier", "ServiceTitan", "Google Sheets"],
     video: {
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     id: "viral-content-os",
     title: "AI Viral Content OS",
     shortSummary: "Cross-platform discovery of viral content with structured analysis and Airtable-driven recreation workflows.",
-    longDescription: "Aggregates TikTok/Instagram/YouTube/Twitter/LinkedIn/Facebook by keyword or hashtag, scores performance, and stores insights in Airtable to generate scripts and briefs for rapid production.",
+    longDescription: "Discover, analyze, and recreate viral content across all major social platforms automatically.\n\nAggregates content from:\n- TikTok, Instagram, YouTube\n- Twitter, LinkedIn, Facebook\n\nSearches by keyword or hashtag, scores performance metrics, and stores actionable insights in Airtable. Automatically generates scripts and creative briefs for rapid content production, turning viral research into executable content strategies.",
     tags: ["Content", "Research", "Automation"],
     tools: ["Airtable", "OpenAI", "APIs"],
     video: {
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     id: "upwork-discord-alerts",
     title: "Upwork → Discord Job Alerts (AI Video niche)",
     shortSummary: "Hourly Upwork scraping with duplicate filtering and relevance checks; instant Discord notifications for target roles.",
-    longDescription: "Targets AI video ad editing tasks via API calls, runs hourly, filters noise, and posts clean, ready-to-review briefs to Discord channels.",
+    longDescription: "Never miss relevant Upwork opportunities with automated job monitoring and instant Discord alerts.\n\nTargets AI video ad editing and related tasks through Upwork API, runs hourly scans, filters out duplicates and irrelevant posts, then delivers clean, ready-to-review job briefs directly to Discord channels. Perfect for freelancers and agencies who want first-mover advantage on high-value projects.",
     tags: ["Ops", "Notifications", "Lead Gen"],
     tools: ["Upwork API", "Discord", "n8n/AnyTask"],
     video: {
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     id: "automated-proposals",
     title: "Automated Proposals for Coaches/Consultants/Sales",
     shortSummary: "Monday CRM stages trigger OpenAI-crafted proposals sent via PandaDoc for faster, on-brand closers.",
-    longDescription: "Detects stage changes, drafts tailored proposals, and dispatches via PandaDoc with tracking. Reduces turnaround and improves win rate with consistent templates.",
+    longDescription: "Eliminate proposal bottlenecks with intelligent automation that creates and sends professional proposals automatically.\n\nDetects Monday CRM stage changes, uses OpenAI to draft tailored, on-brand proposals, then dispatches them via PandaDoc with full tracking enabled. Reduces proposal turnaround time from days to minutes while maintaining consistent quality and improving win rates through faster response times.",
     tags: ["CRM", "Docs", "Sales"],
     tools: ["Monday.com", "OpenAI", "PandaDoc"],
     video: {
@@ -122,7 +122,7 @@ export const projects: Project[] = [
     id: "ai-booking-system",
     title: "AI Booking System (n8n + Cal.com)",
     shortSummary: "Books, cancels, and reschedules via natural language; prevents user errors and keeps stateful memory.",
-    longDescription: "Connects to Cal.com for real-time availability, guards against invalid transitions, and integrates with CRMs/SMS/voice for full-funnel scheduling.",
+    longDescription: "Conversational booking system that understands natural language and manages appointments intelligently.\n\nConnects to Cal.com for real-time availability checking, prevents invalid booking transitions with stateful memory, and integrates seamlessly with CRMs, SMS, and voice channels. Handles bookings, cancellations, and reschedules through simple conversation, eliminating booking errors and providing 24/7 scheduling automation.",
     tags: ["Booking", "Agents", "Calendars"],
     tools: ["n8n", "Cal.com", "OpenAI"],
     video: {
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     id: "lovable-proposal-automation",
     title: "Lovable × Proposal Automation",
     shortSummary: "Generate branded proposals via Lovable AI and send through PandaDoc/Google Slides with dynamic placeholders.",
-    longDescription: "Automates proposal generation with client-specific data, assets, and pricing tables; outputs clean deliverables ready to share.",
+    longDescription: "Create professional, branded proposals in minutes with AI-powered automation.\n\nLeverages Lovable AI to generate complete proposals populated with client-specific data, visual assets, and dynamic pricing tables. Outputs to PandaDoc or Google Slides as clean, ready-to-share deliverables. Perfect for agencies and consultants who need to scale proposal creation without sacrificing quality or brand consistency.",
     tags: ["Docs", "Sales", "Templates"],
     tools: ["Lovable", "PandaDoc", "Google Slides", "OpenAI"],
     video: {
@@ -150,7 +150,7 @@ export const projects: Project[] = [
     id: "slack-inventory-assistant",
     title: "Slack-Powered Inventory Assistant for Hotels",
     shortSummary: "AI monitors stock, alerts on thresholds, and generates purchase orders; centralised data with Slack commands.",
-    longDescription: "Turns manual inventory into proactive ops. Staff request checks and restocks in Slack; system maintains a single source of truth and scales to WhatsApp/guest-facing flows.",
+    longDescription: "Transform manual inventory tracking into proactive, automated operations through Slack.\n\nAI-powered system monitors stock levels, sends threshold alerts, and generates purchase orders automatically. Staff can request inventory checks and restock orders through simple Slack commands. Maintains a single source of truth for all inventory data and easily scales to WhatsApp or guest-facing channels for expanded functionality.",
     tags: ["Ops", "Slack", "Agents"],
     tools: ["Slack", "Datastore", "APIs", "OpenAI"],
     video: {
@@ -164,7 +164,7 @@ export const projects: Project[] = [
     id: "gohighlevel-suite",
     title: "GoHighLevel Funnels, Workflows & Automations",
     shortSummary: "A suite of automations: confirmations, no-show follow-ups, missed-call text-back, FAQ AI replies, IG DM replies, reactivation, and reviews.",
-    longDescription: "Reusable GHL assets covering the customer journey—engagement, recovery, and advocacy—ready to clone and adapt per client.",
+    longDescription: "Complete suite of GoHighLevel automations covering the entire customer journey.\n\nIncludes:\n- Appointment confirmations and no-show recovery\n- Missed-call text-back automation\n- AI-powered FAQ responses\n- Instagram DM auto-replies\n- Customer reactivation sequences\n- Review request campaigns\n\nReusable, pre-built workflows ready to clone and customize for any client. Covers engagement, recovery, and advocacy stages with proven conversion tactics.",
     tags: ["CRM", "Engagement", "Retention"],
     tools: ["GoHighLevel", "SMS", "Email", "Instagram"],
     video: {
@@ -178,7 +178,7 @@ export const projects: Project[] = [
     id: "replace-calendly",
     title: "Replace Calendly with an AI Booking Agent",
     shortSummary: "Conversational bookings via n8n + OpenAI + Cal.com; extensible to CRM/SMS/voice.",
-    longDescription: "A Calendly-class experience with AI at the core: understands intent, proposes slots, handles reschedules/cancellations, and logs activity to your stack.",
+    longDescription: "Calendly-level experience with AI intelligence at its core for natural, conversational booking.\n\nUnderstands booking intent, proposes available time slots, handles reschedules and cancellations automatically, and logs all activity to your existing stack. Extensible to CRM systems, SMS, and voice channels for omnichannel scheduling. Better than traditional booking links because it adapts to conversation flow and handles complex scenarios.",
     tags: ["Booking", "Agents", "Calendars"],
     tools: ["n8n", "Cal.com", "OpenAI"],
     video: {
@@ -192,7 +192,7 @@ export const projects: Project[] = [
     id: "sales-hiring-workflow",
     title: "Automated Sales Hiring Workflow",
     shortSummary: "Typeform → ClickUp pipeline with stage-based interview emails and follow-up guards.",
-    longDescription: "Captures applicants, updates ClickUp stages, auto-sends interview invites at Interviewing 1/2, and flags overdue follow-ups—so no candidate slips through.",
+    longDescription: "Streamline your hiring process with automated applicant tracking and communication.\n\nCaptures applications via Typeform, updates ClickUp pipeline stages automatically, sends interview invitations at appropriate stages (Interviewing 1/2), and flags overdue follow-ups. Ensures no candidate slips through the cracks while reducing manual coordination time for hiring managers.",
     tags: ["Hiring", "CRM", "Ops"],
     tools: ["Typeform", "ClickUp", "Email", "n8n/Zapier"],
     video: {
@@ -206,7 +206,7 @@ export const projects: Project[] = [
     id: "automated-customer-booking",
     title: "Automated Customer Booking System",
     shortSummary: "A 24/7 automated booking system powered by chatbots and calendar integrations. Customers can create, cancel, and reschedule appointments instantly across WhatsApp, Slack, or web chat, eliminating front-desk bottlenecks and scaling operations without extra staff.",
-    longDescription: "An automated customer booking system that can handle unlimited bookings for your business, running 24/7. It validates customer details, manages calendars across multiple operators, and processes bookings, reschedules, and cancellations seamlessly. The system works across chat platforms like WhatsApp, Slack, and web widgets. It ensures timezone accuracy, supports unlimited scale, and reduces workload by eliminating front-desk bottlenecks. This automation is especially powerful for service-based businesses such as salons, barbershops, dental clinics, and hotels. Built from 200+ automation systems deployed over 6 months, saving clients time, reducing costs, and unlocking new revenue. Get the n8n blueprint template at https://kidaflow.gumroad.com/l/wygli",
+    longDescription: "24/7 automated booking system handling unlimited appointments across multiple channels without human intervention.\n\nKey features:\n- Validates customer details automatically\n- Manages calendars for multiple operators\n- Processes bookings, reschedules, and cancellations\n- Works on WhatsApp, Slack, and web widgets\n- Ensures timezone accuracy\n- Scales infinitely without additional staff\n\nPerfect for service businesses like salons, barbershops, dental clinics, and hotels. Eliminates front-desk bottlenecks and reduces operational costs while improving customer experience.\n\nBuilt from 200+ deployed automation systems. Get the n8n blueprint: https://kidaflow.gumroad.com/l/wygli",
     tags: ["Booking", "Agents", "Automation", "WhatsApp", "Service"],
     tools: ["n8n", "Cal.com", "WhatsApp", "Slack", "OpenAI"],
     video: {
@@ -228,7 +228,7 @@ export const projects: Project[] = [
     id: "cold-email-personalization",
     title: "AI-Powered Cold Email Personalization System",
     shortSummary: "An automation that scrapes real prospect data and generates thousands of personalized cold emails in minutes. Helps agencies, B2B teams, and founders boost reply rates, book more calls, and scale outreach effortlessly.",
-    longDescription: "This system solves one of the toughest challenges in cold outreach: low reply rates caused by generic, copy-paste emails. Using real data scraped from platforms like Instagram, Facebook, TikTok, and LinkedIn, it automatically generates thousands of highly personalized emails that feel researched and relevant. Instead of blasting the same message to every prospect, this automation tailors each email with details such as follower counts, ad spend breakdowns, competitor analysis, and brand-specific insights. The result is higher engagement, stronger credibility, and faster deal flow. In one case study, a digital marketing agency scaled from 0 to 500 personalized emails per day in under two weeks, sending over 2,000 emails in just four days. Reply rates and conversions jumped, proving that relevance and personalization drive real ROI. The workflow runs automatically overnight, so by morning, your inbox is filled with demos, calls, and warm leads. Outreach that used to take hours now happens in minutes — freeing you to focus on growth instead of repetitive tasks.",
+    longDescription: "Solve the cold email problem: generic messages get ignored. This system generates thousands of personalized emails using real prospect data automatically.\n\nHow it works:\n- Scrapes data from Instagram, Facebook, TikTok, LinkedIn\n- Generates unique emails with follower counts, ad spend, competitor analysis\n- Tailors messaging with brand-specific insights\n- Runs overnight, fills your inbox with warm leads by morning\n\nResults:\n- Digital marketing agency scaled to 500+ emails/day in 2 weeks\n- Sent 2,000+ emails in 4 days\n- Dramatically improved reply rates and conversions\n\nOutreach that took hours now happens in minutes, letting you focus on closing deals instead of writing emails.",
     tags: ["Email", "Personalization", "Automation", "Lead Gen", "Outreach"],
     tools: ["n8n", "OpenAI", "Instagram API", "Facebook Ads Library", "LinkedIn"],
     video: {
@@ -250,7 +250,7 @@ export const projects: Project[] = [
     id: "coaching-assistant-automation",
     title: "$10k/m Simple 24/7 Coaching Assistant (Copy This)",
     shortSummary: "A 24/7 AI coaching assistant that turns your playbooks, frameworks, and methods into a digital system. Clients get instant answers in your voice while you scale without burnout.",
-    longDescription: "This system transforms your coaching knowledge, frameworks, and playbooks into a 24/7 digital assistant that answers client questions in your own brand voice.\n\nEvery coach faces the same bottleneck: clients ask the same 20 questions repeatedly. Scaling from 10 clients to hundreds or thousands makes this unsustainable. This automation eliminates repetition by delivering instant, high-quality answers any time of day.\n\nHow it works:\n- Slack integration so clients ask questions in a familiar space\n- Airtable handles identity mapping for personalized replies\n- Supabase stores your proprietary methods and playbooks, ensuring responses are accurate and brand-authentic\n- Built with n8n automation to connect everything seamlessly\n\nExample: For Antifragile Academy, we uploaded a 165-page knowledge base of research and exercises. Now, athletes ask about breathing techniques or distraction handling and receive detailed, step-by-step responses consistent with the coach's teachings.\n\nBenefits for coaches and consultants:\n- Save hours weekly by eliminating repetitive explanations\n- Guarantee consistent, detailed answers regardless of time or workload\n- Scale effortlessly from 10 clients to 1,000+ without losing quality\n- Free up energy for deeper, higher-value live coaching\n\nThis is not about AI replacing coaches. It's about AI scaling coaches—giving every client instant, contextual answers while you focus on transformation.\n\nWorkflow template available at: https://kidaflow.gumroad.com/l/jgrmr",
+    longDescription: "Transform your coaching knowledge into a 24/7 AI assistant that answers client questions in your brand voice.\n\nThe problem:\nCoaches face a bottleneck—clients ask the same 20 questions repeatedly. Scaling from 10 to 1,000+ clients becomes unsustainable without this automation.\n\nHow it works:\n- Slack integration for familiar client experience\n- Airtable handles identity mapping for personalization\n- Supabase stores your proprietary frameworks and playbooks\n- n8n connects everything seamlessly\n\nReal example:\nAntifragile Academy uploaded a 165-page knowledge base. Athletes now get instant, detailed answers about breathing techniques and distraction handling—consistent with the coach's methodology.\n\nBenefits:\n- Save hours weekly on repetitive questions\n- Guarantee consistent, brand-authentic answers 24/7\n- Scale from 10 to 1,000+ clients without quality loss\n- Focus energy on high-value transformation work\n\nThis isn't about replacing coaches—it's about scaling them. Get the workflow: https://kidaflow.gumroad.com/l/jgrmr",
     tags: ["Coaching", "AI", "Automation", "Slack", "Agents"],
     tools: ["n8n", "Slack", "Airtable", "Supabase", "OpenAI"],
     video: {

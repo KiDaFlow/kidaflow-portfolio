@@ -134,26 +134,57 @@ const ProjectDetail = () => {
                 <CardTitle className="font-heading text-xl">Project Overview</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="prose prose-lg max-w-none text-foreground">
-                  <p className="text-muted-foreground leading-relaxed">
-                    {project.longDescription.split(/(https?:\/\/[^\s]+)/g).map((part, index) => {
-                      if (part.match(/^https?:\/\//)) {
-                        return (
-                          <a
-                            key={index}
-                            href={part}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:text-primary/80 underline inline-flex items-center gap-1"
-                          >
-                            {part}
-                            <ExternalLink className="h-3 w-3" />
-                          </a>
-                        );
-                      }
-                      return part;
-                    })}
-                  </p>
+                <div className="prose prose-lg max-w-none">
+                  {project.longDescription.split('\n\n').map((section, sectionIndex) => {
+                    // Check if section is a list (starts with - or bullet)
+                    if (section.trim().startsWith('-') || section.includes('\n-')) {
+                      const items = section.split('\n').filter(line => line.trim().startsWith('-'));
+                      return (
+                        <ul key={sectionIndex} className="space-y-2 mb-6 list-none">
+                          {items.map((item, itemIndex) => (
+                            <li key={itemIndex} className="flex items-start space-x-3">
+                              <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                              <span className="text-muted-foreground leading-relaxed">
+                                {item.replace(/^-\s*/, '').trim()}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      );
+                    }
+                    
+                    // Check if section is a heading (ends with :)
+                    if (section.trim().endsWith(':')) {
+                      return (
+                        <h3 key={sectionIndex} className="font-heading font-semibold text-foreground text-lg mt-6 mb-3">
+                          {section.trim().replace(/:$/, '')}
+                        </h3>
+                      );
+                    }
+                    
+                    // Regular paragraph with link handling
+                    return (
+                      <p key={sectionIndex} className="text-muted-foreground leading-relaxed mb-4">
+                        {section.split(/(https?:\/\/[^\s]+)/g).map((part, index) => {
+                          if (part.match(/^https?:\/\//)) {
+                            return (
+                              <a
+                                key={index}
+                                href={part}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:text-primary/80 underline inline-flex items-center gap-1"
+                              >
+                                {part}
+                                <ExternalLink className="h-3 w-3" />
+                              </a>
+                            );
+                          }
+                          return part;
+                        })}
+                      </p>
+                    );
+                  })}
                 </div>
               </CardContent>
             </Card>
