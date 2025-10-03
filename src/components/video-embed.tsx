@@ -15,6 +15,15 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
+  // Convert YouTube URLs to full watch format
+  const getFullYouTubeUrl = (url: string) => {
+    const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1];
+    if (videoId) {
+      return `https://www.youtube.com/watch?v=${videoId}`;
+    }
+    return url;
+  };
+
   // Convert video URLs to embeddable format
   const getEmbedUrl = (url: string, type: "loom" | "youtube") => {
     if (type === "youtube") {
@@ -134,7 +143,7 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
       <div className="flex justify-center">
         <Button asChild variant="outline" size="sm">
           <a 
-            href={video.fallbackUrl || video.url} 
+            href={video.type === "youtube" ? getFullYouTubeUrl(video.fallbackUrl || video.url) : (video.fallbackUrl || video.url)} 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center"
