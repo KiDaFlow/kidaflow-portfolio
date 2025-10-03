@@ -267,6 +267,28 @@ export const projects: Project[] = [
       "Proven for coaches, consultants, and professional programs"
     ],
     featured: true
+  },
+  {
+    id: "ai-customer-support-whatsapp",
+    title: "AI Customer Support on WhatsApp for Businesses",
+    shortSummary: "⚡ 24/7 WhatsApp AI chatbot that qualifies leads, answers instantly, and books calls automatically... so you never lose a customer to slow replies.",
+    longDescription: "The Challenge:\nMost businesses struggle with customer support bottlenecks. Ads and marketing generate leads, but when inquiries flood in, teams can't respond fast enough. The result? Missed opportunities and lost revenue.\n\nThe Solution:\nThis project integrates an AI chatbot directly into WhatsApp and websites. The chatbot responds instantly, handles multiple conversations simultaneously, qualifies leads, and books appointments automatically. Customers receive answers in seconds, regardless of time zones or office hours.\n\nCase Study - Career Without Borders:\nA coaching company with over 50,000 LinkedIn followers was overwhelmed by daily inquiries across LinkedIn, WhatsApp, and their website. Despite a 15-person team, many leads slipped through the cracks. Our AI chatbot changed everything.\n\nThe chatbot engaged every lead instantly, asked qualifying questions, and directed them to the right next step: free consultations, paid packages, or live agents. Within weeks, 100% of inquiries were answered on time, conversion rates improved dramatically, and no leads were lost.\n\nWhy It Works:\nThis solution works across industries—coaching, e-commerce, real estate, healthcare, professional services—anywhere responsiveness drives revenue. AI support ensures you're always available, without extra payroll costs, turning customer service into a competitive advantage.",
+    tags: ["AI", "WhatsApp", "Customer Support", "Lead Gen", "Automation"],
+    tools: ["WhatsApp", "n8n", "OpenAI", "Calendly"],
+    video: {
+      type: "youtube",
+      url: "https://youtu.be/hWEB_0gGxtU",
+      fallbackUrl: "https://youtu.be/hWEB_0gGxtU"
+    },
+    screenshots: [],
+    outcomes: [
+      "AI chatbot integrated into WhatsApp + websites",
+      "Handles unlimited conversations 24/7",
+      "Qualifies leads with custom questions",
+      "Books meetings via Calendly or shares service packages automatically",
+      "Reduces response time from hours to seconds, boosting conversions"
+    ],
+    featured: true
   }
 ];
 
