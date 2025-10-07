@@ -37,7 +37,7 @@ export function BackToTop() {
       size="icon"
       className={cn(
         "fixed bottom-8 right-8 z-50 h-12 w-12 rounded-full shadow-lg",
-        "bg-primary text-primary-foreground hover:bg-primary/90",
+        "bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary hover:bg-primary/30",
         "transition-all duration-300 ease-in-out",
         "hover:shadow-xl hover:scale-110",
         isVisible 
