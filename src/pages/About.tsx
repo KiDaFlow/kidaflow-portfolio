@@ -165,7 +165,7 @@ const About = () => {
               </Link>
               
               <Link to="/projects">
-                <Button size="lg" variant="outline" className="border-white/20 text-primary-foreground hover:bg-white/10 font-semibold">
+                <Button size="lg" variant="outline" className="border-white/50 bg-white/10 text-white hover:bg-white/20 font-semibold">
                   View Our Work
                 </Button>
               </Link>
