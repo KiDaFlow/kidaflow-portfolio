@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,6 +20,11 @@ import { toast } from "@/hooks/use-toast";
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const project = projects.find(p => p.id === id);
+
+  // Scroll to top when component mounts or project changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [id]);
 
   if (!project) {
     return <Navigate to="/404" replace />;
