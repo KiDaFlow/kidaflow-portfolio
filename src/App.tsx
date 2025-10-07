@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import { Header } from "./components/layout/header";
 import { Footer } from "./components/layout/footer";
+import { BackToTop } from "./components/ui/back-to-top";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
               </Routes>
             </main>
             <Footer />
+            <BackToTop />
           </div>
         </BrowserRouter>
       </TooltipProvider>
