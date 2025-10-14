@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Play } from "lucide-react";
 
@@ -14,6 +14,23 @@ interface VideoEmbedProps {
 export function VideoEmbed({ video, title }: VideoEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+
+  // Listen for YouTube embed errors (codes 101/150)
+  useEffect(() => {
+    const onMessage = (event: MessageEvent) => {
+      try {
+        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        if (data?.event === 'onError' || data?.info === 101 || data?.info === 150) {
+          setHasError(true);
+        }
+      } catch {
+        // ignore
+      }
+    };
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
+  }, []);
 
   // Convert YouTube URLs to full watch format
   const getFullYouTubeUrl = (url: string) => {
@@ -38,13 +55,15 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
     if (type === "youtube") {
       // Respect provided embed URLs exactly (preserve query params)
       if (/youtube\.com\/embed\//.test(url)) {
-        return url;
+        const sep = url.includes("?") ? "&" : "?";
+        const origin = typeof window !== "undefined" ? encodeURIComponent(window.location.origin) : "";
+        return `${url}${sep}enablejsapi=1${origin ? `&origin=${origin}` : ""}`;
       }
       // Handle various YouTube URL formats
       const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1];
       if (videoId) {
-        // Use a clean embed URL without forcing extra params
-        return `https://www.youtube.com/embed/${videoId}`;
+        const origin = typeof window !== "undefined" ? encodeURIComponent(window.location.origin) : "";
+        return `https://www.youtube.com/embed/${videoId}?enablejsapi=1${origin ? `&origin=${origin}` : ""}`;
       }
       return null;
     } else if (type === "loom") {
@@ -79,9 +98,9 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
                 <div className="bg-white/10 backdrop-blur-md rounded-full p-6 inline-block">
                   <Play className="h-16 w-16 text-white" />
                 </div>
-                <Button asChild size="lg" className="bg-white text-black hover:bg-white/90">
+                <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
                   <a 
-                    href={video.fallbackUrl || video.url} 
+                    href={getFullYouTubeUrl(video.fallbackUrl || video.url)} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center"
@@ -166,7 +185,18 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
-              onLoad={() => setIsLoaded(true)}
+              ref={iframeRef}
+              id="yt-embed-player"
+              onLoad={() => {
+                setIsLoaded(true);
+                try {
+                  const win = iframeRef.current?.contentWindow;
+                  if (win) {
+                    win.postMessage(JSON.stringify({ event: 'listening', id: 'yt-embed-player' }), '*');
+                    win.postMessage(JSON.stringify({ event: 'command', func: 'addEventListener', args: ['onError'], id: 'yt-embed-player' }), '*');
+                  }
+                } catch {}
+              }}
               onError={() => setHasError(true)}
               style={{ 
                 position: 'absolute', 
