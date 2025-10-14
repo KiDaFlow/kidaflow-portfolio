@@ -24,6 +24,15 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
     return url;
   };
 
+  // Get YouTube thumbnail
+  const getYouTubeThumbnail = (url: string) => {
+    const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1];
+    if (videoId) {
+      return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    }
+    return null;
+  };
+
   // Convert video URLs to embeddable format
   const getEmbedUrl = (url: string, type: "loom" | "youtube") => {
     if (type === "youtube") {
@@ -40,7 +49,7 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
       return null;
     } else if (type === "loom") {
       // Extract video ID from Loom URL
-      const videoId = url.match(/loom\.com\/share\/([^/?&\n\r]+)/)?.[1];
+      const videoId = url.match(/loom\.com\/share\/([^\/?&\n\r]+)/)?.[1];
       if (videoId) {
         // Extract sid parameter if present, otherwise use empty string
         const sidMatch = url.match(/[?&]sid=([^&\n\r]+)/);
@@ -53,27 +62,56 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
   };
 
   const embedUrl = getEmbedUrl(video.url, video.type);
+  const thumbnail = video.type === "youtube" ? getYouTubeThumbnail(video.url) : null;
 
   if (!embedUrl || hasError) {
     return (
-      <div className="aspect-video bg-muted rounded-lg flex items-center justify-center border border-border">
-        <div className="text-center space-y-4">
-          <Play className="h-12 w-12 text-muted-foreground mx-auto" />
-          <div className="space-y-2">
-            <p className="text-muted-foreground">Video not available for embedding</p>
-            <Button asChild variant="outline" size="sm">
-              <a 
-                href={video.fallbackUrl || video.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center"
-              >
-                Open in new tab
-                <ExternalLink className="h-4 w-4 ml-2" />
-              </a>
-            </Button>
+      <div className="aspect-video bg-muted rounded-lg flex items-center justify-center border border-border overflow-hidden relative group">
+        {thumbnail ? (
+          <>
+            <img 
+              src={thumbnail} 
+              alt={title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+              <div className="text-center space-y-4">
+                <div className="bg-white/10 backdrop-blur-md rounded-full p-6 inline-block">
+                  <Play className="h-16 w-16 text-white" />
+                </div>
+                <Button asChild size="lg" className="bg-white text-black hover:bg-white/90">
+                  <a 
+                    href={video.fallbackUrl || video.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center"
+                  >
+                    Watch on YouTube
+                    <ExternalLink className="h-4 w-4 ml-2" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="text-center space-y-4">
+            <Play className="h-12 w-12 text-muted-foreground mx-auto" />
+            <div className="space-y-2">
+              <p className="text-muted-foreground">Video not available for embedding</p>
+              <Button asChild variant="outline" size="sm">
+                <a 
+                  href={video.fallbackUrl || video.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center"
+                >
+                  Open in new tab
+                  <ExternalLink className="h-4 w-4 ml-2" />
+                </a>
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
