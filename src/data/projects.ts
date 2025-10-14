@@ -289,6 +289,28 @@ export const projects: Project[] = [
       "Reduces response time from hours to seconds, boosting conversions"
     ],
     featured: true
+  },
+  {
+    id: "ai-voice-receptionist",
+    title: "I Built an AI Voice Receptionist That Never Misses a Call (No-Code DIY)",
+    shortSummary: "An AI voice agent that answers every call, books appointments automatically, and updates your calendar in real time — built entirely with no-code tools like Retell AI, Cal.com, and Google Calendar.",
+    longDescription: "This system transforms how businesses handle inbound calls by using AI to act as a 24/7 voice receptionist. It captures leads, answers questions, books appointments, and syncs with calendars — without any human intervention.\n\nBuilt entirely with no code, it combines Retell AI (voice agent), Cal.com (scheduling), and Google Calendar (organization). The agent listens, responds naturally, and executes real booking actions through connected APIs.\n\nHere's how it works:\n- A customer calls your business number.\n- The AI answers instantly, confirms details like name, service type, and preferred time.\n- It checks your real-time availability via Cal.com and books the slot in Google Calendar.\n- If no slots are available, it offers alternatives automatically.\n\nIn this demo, the system acts as a dental clinic receptionist handling a full appointment booking call — confirming the date, time, and contact details flawlessly.\n\nThe entire build takes less than 30 minutes using no-code tools. Once deployed, it acts as a tireless digital employee — answering calls, logging them, and eliminating missed opportunities.\n\n**Why it matters:**\nBusinesses lose thousands in missed calls and voicemails. This automation ensures every inquiry is answered instantly, 24/7, giving you an edge over competitors still relying on manual reception.",
+    tags: ["AI Voice", "Booking", "Automation", "No-Code"],
+    tools: ["Retell AI", "Cal.com", "Google Calendar"],
+    video: {
+      type: "youtube",
+      url: "https://www.youtube.com/embed/NeDPUt67ZyQ?si=O4frsif4qyYGU3XU",
+      fallbackUrl: "https://youtu.be/NeDPUt67ZyQ"
+    },
+    screenshots: [],
+    outcomes: [
+      "Built with Retell AI + Cal.com + Google Calendar",
+      "Handles real inbound calls automatically",
+      "Books, reschedules, or confirms appointments in real time",
+      "Works as a 24/7 receptionist — no code required",
+      "Deploys in under 30 minutes with simple integrations"
+    ],
+    featured: true
   }
 ];
 
