@@ -27,11 +27,15 @@ export function VideoEmbed({ video, title }: VideoEmbedProps) {
   // Convert video URLs to embeddable format
   const getEmbedUrl = (url: string, type: "loom" | "youtube") => {
     if (type === "youtube") {
+      // Respect provided embed URLs exactly (preserve query params)
+      if (/youtube\.com\/embed\//.test(url)) {
+        return url;
+      }
       // Handle various YouTube URL formats
       const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/)?.[1];
       if (videoId) {
-        // Use the default si parameter for YouTube embeds
-        return `https://www.youtube.com/embed/${videoId}?si=x101t5VaG7X3DCeC`;
+        // Use a clean embed URL without forcing extra params
+        return `https://www.youtube.com/embed/${videoId}`;
       }
       return null;
     } else if (type === "loom") {
