@@ -23,6 +23,7 @@ export function Header() {
     { href: "/", label: "Home" },
     { href: "/projects", label: "Projects" },
     { href: "/about", label: "About" },
+    { href: "/pricing", label: "Pricing" },
     { href: "/contact", label: "Contact" },
   ];
 
