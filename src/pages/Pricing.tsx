@@ -280,10 +280,14 @@ const Pricing = () => {
                   Starting at $3,500
                 </p>
                 <Button asChild size="lg" variant="default">
-                  <Link to="/contact">
+                  <a 
+                    href="https://kidaflow-ai-automati-w3kc.bolt.host/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
                     Discuss Your Needs
                     <ArrowRight className="h-5 w-5 ml-2" />
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </CardContent>
