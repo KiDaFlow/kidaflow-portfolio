@@ -186,11 +186,11 @@ const About = () => {
             {/* Randy Kipkurui */}
             <Card className="overflow-hidden hover:shadow-medium transition-all duration-medium group animate-fade-in" style={{ animationDelay: '0.1s' }}>
               <CardContent className="p-0">
-                <div className="relative overflow-hidden aspect-square">
+                <div className="relative overflow-hidden aspect-square bg-muted">
                   <img 
                     src="/team/randy-kipkurui.jpg" 
                     alt="Randy Kipkurui - Co-Founder & Systems Alchemist"
-                    className="w-full h-full object-cover transition-transform duration-medium group-hover:scale-105"
+                    className="w-full h-full object-contain transition-transform duration-medium group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6 space-y-3">
