@@ -147,6 +147,68 @@ const About = () => {
           </Card>
         </div>
 
+        {/* Meet the Team */}
+        <div className="space-y-8 mb-16">
+          <div className="text-center space-y-4">
+            <h2 className="font-heading text-3xl font-bold text-foreground">
+              Meet the Team
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              The minds behind KiDaFlow's automation ecosystem — passionate about helping businesses save time, scale faster, and operate smarter.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {/* David Njuguna */}
+            <Card className="overflow-hidden hover:shadow-medium transition-all duration-medium group animate-fade-in">
+              <CardContent className="p-0">
+                <div className="relative overflow-hidden aspect-square">
+                  <img 
+                    src="/team/david-njuguna.jpg" 
+                    alt="David Njuguna - Co-Founder & Growth Strategist"
+                    className="w-full h-full object-cover transition-transform duration-medium group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 space-y-3">
+                  <h3 className="font-heading text-2xl font-bold text-foreground">
+                    David Njuguna
+                  </h3>
+                  <p className="text-primary font-semibold">
+                    Co-Founder & Growth Strategist
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    David drives the strategic vision and growth initiatives at KiDaFlow. With deep expertise in marketing automation and AI-driven systems, he focuses on helping businesses unlock scale through smarter, data-backed workflows. His passion lies in turning operational inefficiencies into growth opportunities that move the bottom line.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Randy Kipkurui */}
+            <Card className="overflow-hidden hover:shadow-medium transition-all duration-medium group animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              <CardContent className="p-0">
+                <div className="relative overflow-hidden aspect-square">
+                  <img 
+                    src="/team/randy-kipkurui.jpg" 
+                    alt="Randy Kipkurui - Co-Founder & Systems Alchemist"
+                    className="w-full h-full object-cover transition-transform duration-medium group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 space-y-3">
+                  <h3 className="font-heading text-2xl font-bold text-foreground">
+                    Randy Kipkurui
+                  </h3>
+                  <p className="text-primary font-semibold">
+                    Co-Founder & Systems Alchemist
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Randy leads product architecture and automation design. A master of no-code and AI integration, he's behind the core systems that power KiDaFlow's voice agents, CRMs, and AI chat experiences. His philosophy: "Build systems that scale themselves." Randy ensures every workflow is both elegant and efficient.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
         {/* CTA Section */}
         <Card className="border-primary/20 bg-gradient-primary">
           <CardContent className="pt-8 pb-8 text-center">
