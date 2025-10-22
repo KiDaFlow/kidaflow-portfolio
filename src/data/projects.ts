@@ -311,6 +311,30 @@ export const projects: Project[] = [
       "Deploys in under 30 minutes with simple integrations"
     ],
     featured: true
+  },
+  {
+    id: "cold-email-ai-21k-system",
+    title: "I Sent 21,000+ Cold Emails in 29 Days Using AI (Copy My Exact System)",
+    shortSummary: "Built a fully automated AI outreach system that sends 20,000+ cold emails per month — personalized, compliant, and scalable. Learn the exact workflow combining lead scraping, enrichment, and safe automation.",
+    longDescription: "In this project, I demonstrate how I scaled my outreach from manual cold emails to over 21,000 personalized AI-powered emails in just 29 days. This system completely automates lead generation, enrichment, personalization, and delivery — cutting time spent on outreach by over 75%.\n\nThe goal: make cold email smarter, faster, and more personal.\n\nHere's what's inside the system:\n- **AI Outreach Framework:** The exact setup used to automate outreach from start to finish.\n- **Lead Sourcing & Enrichment:** Using tools like Apollo, Clay, and Apify scrapers to collect rich, verified data for each prospect.\n- **AI Personalization:** Custom GPT prompts that tailor each email based on public data — followers, ads, competitors, and brand insights.\n- **Email Sending Automations:** Built in **n8n** and integrated with **Instantly** for safe, high-volume delivery that avoids spam filters.\n- **Smart Scaling:** Campaigns that grow from 200 to 20,000+ emails per month without domain issues.\n- **Performance Tracking:** Automated reply tagging, booking tracking, and analytics dashboards.\n\nThis system is designed for agencies, SaaS founders, and consultants who want to reach more leads without manual work. It turns what used to take hours into a fully autonomous outbound engine running 24/7.\n\n**Result:**\n- 21,000+ personalized emails sent in under a month\n- 3x increase in reply rates\n- Seamless scaling without domain warm-up issues\n- Time saved: 5+ hours per day\n\n**Why It Works:**\nAI handles what humans can't scale — research, personalization, and delivery. By combining n8n workflows, enrichment APIs, and smart email platforms, the outreach stays both human and automated.\n\n**Ready to scale your outreach?**\nIf you'd like this AI outreach system built for your business, reach out to us at KiDaFlow — we design custom lead-gen automations that help you scale smarter, not harder.\n\nContact:\n- Email: hello@kidaflow.com\n- LinkedIn: https://www.linkedin.com/in/david-kida-627374240",
+    tags: ["Cold Email", "AI", "Outreach", "Lead Gen", "Automation"],
+    tools: ["n8n", "Instantly", "Apollo", "Clay", "Apify", "OpenAI"],
+    video: {
+      type: "youtube",
+      url: "https://youtu.be/fA5zPmznaTw",
+      fallbackUrl: "https://youtu.be/fA5zPmznaTw"
+    },
+    screenshots: [],
+    outcomes: [
+      "Fully automated cold email outreach system",
+      "AI-driven personalization for every prospect",
+      "Data scraping and enrichment via Apollo, Clay, and Apify",
+      "Email automation built in n8n + Instantly",
+      "Safe sending strategy that bypasses spam filters",
+      "Scalable to 50,000+ monthly emails"
+    ],
+    date: "2025-01",
+    featured: true
   }
 ];
 
