@@ -41,7 +41,7 @@ const Index = () => {
               </Link>
               
               <Link to="/contact">
-                <Button variant="outline" size="lg" className="border-primary/20 text-foreground hover:bg-primary/5 font-semibold px-8 py-4 text-lg">
+                <Button variant="outline" size="lg" className="border-primary/40 text-foreground hover:bg-primary/10 hover:border-primary/60 font-semibold px-8 py-4 text-lg transition-all duration-medium">
                   Start Your Project
                 </Button>
               </Link>
