@@ -1,73 +1,110 @@
-# Welcome to your Lovable project
+Here’s a rewritten **README.md** that reflects **who KiDaFlow is** — an AI & Automation Solutions and Consulting company — while keeping the technical instructions clear and professional 👇
 
-## Project info
+---
 
-**URL**: https://lovable.dev/projects/d2377043-b795-432c-94ce-cba5facb7a7f
+# KiDaFlow AI & Automation Solutions
 
-## How can I edit this code?
+Welcome to the official KiDaFlow project — built on **Lovable**.
+This is where we design, test, and refine the systems that power our AI and automation solutions for businesses worldwide.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🧠 About KiDaFlow
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d2377043-b795-432c-94ce-cba5facb7a7f) and start prompting.
+**KiDaFlow** helps businesses unlock efficiency and scale faster through **AI-powered automation and consulting**.
+We specialize in designing intelligent systems that eliminate repetitive work, streamline customer interactions, and turn manual workflows into scalable, data-driven processes.
 
-Changes made via Lovable will be committed automatically to this repo.
+Whether you’re automating lead generation, CRM integrations, voice/chat agents, or full operational workflows — KiDaFlow provides flexible and strategic AI solutions that fit your business goals.
 
-**Use your preferred IDE**
+**Our focus:**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* AI Strategy & Automation Consulting
+* Workflow Optimization & Systems Design
+* Voice & Chat AI Agents
+* CRM & Data Process Automations
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Learn more: [www.kidaflow.com](https://www.kidaflow.com)
 
-Follow these steps:
+---
+
+## ⚙️ Project Info
+
+**Live Project URL:**
+[https://kidaflow-portfolio.lovable.app/](https://kidaflow-portfolio.lovable.app)
+
+This project represents the **KiDaFlow website and automation showcase**, built using Lovable’s low-code environment and powered by modern front-end technologies.
+
+---
+
+## 🧩 How to Edit the Project
+
+You can make changes in three ways:
+
+### 1️⃣ Edit via Lovable
+
+Go to your [Lovable Project Dashboard](https://lovable.dev/projects/d2377043-b795-432c-94ce-cba5facb7a7f) and prompt your edits directly.
+All changes will auto-commit to this repository.
+
+### 2️⃣ Work Locally (Recommended for Devs)
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Step 2: Open the project folder
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Step 3: Install dependencies
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Requirements: Node.js + npm (install easily via [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 3️⃣ Edit in GitHub
 
-**Use GitHub Codespaces**
+* Open the desired file
+* Click the ✏️ “Edit” button
+* Make your changes and commit
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 4️⃣ Use GitHub Codespaces
 
-## What technologies are used for this project?
+Launch a new Codespace to edit directly in the browser.
+All updates will sync automatically with Lovable.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🧰 Tech Stack
 
-## How can I deploy this project?
+This project is powered by:
 
-Simply open [Lovable](https://lovable.dev/projects/d2377043-b795-432c-94ce-cba5facb7a7f) and click on Share -> Publish.
+* ⚡ **Vite**
+* 🧩 **React + TypeScript**
+* 🎨 **shadcn/ui + Tailwind CSS**
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 🚀 Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Deploy your project directly from [Lovable](https://lovable.dev/projects/d2377043-b795-432c-94ce-cba5facb7a7f):
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+* Click **Share → Publish** to make your latest version live.
+
+---
+
+## 🌍 Custom Domains
+
+You can connect your own domain in **Lovable → Project → Settings → Domains → Connect Domain**.
+
+Read the official guide: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide).
+
+---
+
+### 💬 Need Help?
+
+If you’d like to collaborate, consult, or explore how KiDaFlow can help automate your business:
+📧 [hello@kidaflow.com](mailto:hello@kidaflow.com)
+🔗 [LinkedIn](https://www.linkedin.com/in/david-kida-627374240)
+
