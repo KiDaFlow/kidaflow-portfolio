@@ -12,8 +12,8 @@ interface StatItem {
 const stats: StatItem[] = [
   {
     icon: <Star className="h-6 w-6" />,
-    value: "4.97",
-    label: "Average Rating",
+    value: "100%",
+    label: "Job Success & Top Rated",
     color: "text-amber-500"
   },
   {
@@ -82,12 +82,7 @@ export function StatsSection() {
                 </div>
                 <div className="space-y-2">
                   <div className="font-heading text-3xl font-bold text-foreground">
-                    {stat.value.includes('.') ? (
-                      <>
-                        <AnimatedCounter target={parseFloat(stat.value)} />
-                        /5
-                      </>
-                    ) : stat.value.includes('%') ? (
+                    {stat.value.includes('%') ? (
                       <>
                         <AnimatedCounter target={parseInt(stat.value)} />%
                       </>

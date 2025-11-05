@@ -24,6 +24,7 @@ export function Header() {
     { href: "/projects", label: "Projects" },
     { href: "/about", label: "About" },
     { href: "/pricing", label: "Pricing" },
+    { href: "https://kidaflow-ai-automati-w3kc.bolt.host/", label: "Get Free Audit", external: true },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -56,20 +57,32 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <Link key={item.href} to={item.href}>
-                <Button
-                  variant={isActive(item.href) ? "secondary" : "ghost"}
-                  size="sm"
-                  className={cn(
-                    "font-medium transition-colors",
-                    isActive(item.href) 
-                      ? "text-primary bg-primary/10" 
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {item.label}
-                </Button>
-              </Link>
+              item.external ? (
+                <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="font-medium transition-colors text-muted-foreground hover:text-foreground"
+                  >
+                    {item.label}
+                  </Button>
+                </a>
+              ) : (
+                <Link key={item.href} to={item.href}>
+                  <Button
+                    variant={isActive(item.href) ? "secondary" : "ghost"}
+                    size="sm"
+                    className={cn(
+                      "font-medium transition-colors",
+                      isActive(item.href) 
+                        ? "text-primary bg-primary/10" 
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    {item.label}
+                  </Button>
+                </Link>
+              )
             ))}
           </nav>
 
@@ -98,24 +111,42 @@ export function Header() {
           <div className="md:hidden py-4 border-t border-border/40 animate-fade-in">
             <nav className="flex flex-col space-y-2">
               {navItems.map((item) => (
-                <Link 
-                  key={item.href} 
-                  to={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <Button
-                    variant={isActive(item.href) ? "secondary" : "ghost"}
-                    size="sm"
-                    className={cn(
-                      "w-full justify-start font-medium transition-colors",
-                      isActive(item.href) 
-                        ? "text-primary bg-primary/10" 
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
+                item.external ? (
+                  <a 
+                    key={item.href} 
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {item.label}
-                  </Button>
-                </Link>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="w-full justify-start font-medium transition-colors text-muted-foreground hover:text-foreground"
+                    >
+                      {item.label}
+                    </Button>
+                  </a>
+                ) : (
+                  <Link 
+                    key={item.href} 
+                    to={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Button
+                      variant={isActive(item.href) ? "secondary" : "ghost"}
+                      size="sm"
+                      className={cn(
+                        "w-full justify-start font-medium transition-colors",
+                        isActive(item.href) 
+                          ? "text-primary bg-primary/10" 
+                          : "text-muted-foreground hover:text-foreground"
+                      )}
+                    >
+                      {item.label}
+                    </Button>
+                  </Link>
+                )
               ))}
             </nav>
           </div>
