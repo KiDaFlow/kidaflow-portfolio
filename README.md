@@ -1,7 +1,3 @@
-Here’s a rewritten **README.md** that reflects **who KiDaFlow is** — an AI & Automation Solutions and Consulting company — while keeping the technical instructions clear and professional 👇
-
----
-
 # KiDaFlow AI & Automation Solutions
 
 Welcome to the official KiDaFlow project — built on **Lovable**.
