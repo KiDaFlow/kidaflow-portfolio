@@ -14,6 +14,9 @@ import NotFound from "./pages/NotFound";
 import { Header } from "./components/layout/header";
 import { Footer } from "./components/layout/footer";
 import { BackToTop } from "./components/ui/back-to-top";
+import { CursorFollower } from "./components/ui/cursor-follower";
+import { FloatingParticles } from "./components/ui/floating-particles";
+import { ScrollProgress } from "./components/ui/scroll-progress";
 
 const queryClient = new QueryClient();
 
@@ -24,9 +27,14 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="min-h-screen bg-background text-foreground">
+          <div className="min-h-screen bg-background text-foreground relative">
+            {/* Interactive elements */}
+            <CursorFollower />
+            <FloatingParticles />
+            <ScrollProgress />
+
             <Header />
-            <main>
+            <main className="relative z-10">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/projects" element={<Projects />} />

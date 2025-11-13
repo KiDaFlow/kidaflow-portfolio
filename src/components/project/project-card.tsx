@@ -27,50 +27,57 @@ const toolColors: Record<string, string> = {
 export function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <Card className={cn(
-      "group overflow-hidden border border-border hover:border-primary/20 transition-all duration-medium hover:shadow-medium hover:-translate-y-1",
+      "group relative overflow-hidden border border-border hover:border-primary/30 transition-all duration-medium hover:shadow-glow hover:-translate-y-2 hover:scale-[1.02]",
+      "before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/5 before:to-transparent before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100",
       className
     )}>
-      <CardHeader className="pb-3">
+      {/* Shimmer effect on hover */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+      </div>
+
+      <CardHeader className="pb-3 relative z-10">
         <div className="flex items-start justify-between">
           <div className="space-y-2 flex-1">
             <div className="flex items-center space-x-2">
               {project.featured && (
-                <Badge className="bg-gradient-primary text-primary-foreground border-0 text-xs">
+                <Badge className="bg-gradient-primary text-primary-foreground border-0 text-xs shadow-soft group-hover:shadow-glow transition-shadow duration-300">
                   Featured
                 </Badge>
               )}
               {project.video && (
-                <div className="flex items-center space-x-1 text-muted-foreground">
-                  <Play className="h-3 w-3" />
+                <div className="flex items-center space-x-1 text-muted-foreground group-hover:text-primary transition-colors">
+                  <Play className="h-3 w-3 group-hover:scale-110 transition-transform" />
                   <span className="text-xs font-medium">{project.video.type}</span>
                 </div>
               )}
             </div>
-            <h3 className="font-heading font-semibold text-lg leading-tight text-foreground group-hover:text-primary transition-colors">
+            <h3 className="font-heading font-semibold text-lg leading-tight text-foreground group-hover:text-primary transition-colors duration-300">
               {project.title}
             </h3>
           </div>
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-4">
-        <p className="text-muted-foreground text-sm leading-relaxed">
+      <CardContent className="space-y-4 relative z-10">
+        <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground transition-colors duration-300">
           {project.shortSummary}
         </p>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1">
-          {project.tags.slice(0, 3).map((tag) => (
-            <Badge 
-              key={tag} 
-              variant="secondary" 
-              className="text-xs font-medium bg-muted/50 text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+          {project.tags.slice(0, 3).map((tag, index) => (
+            <Badge
+              key={tag}
+              variant="secondary"
+              className="text-xs font-medium bg-muted/50 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:scale-105 transition-all duration-200"
+              style={{ transitionDelay: `${index * 50}ms` }}
             >
               {tag}
             </Badge>
           ))}
           {project.tags.length > 3 && (
-            <Badge variant="outline" className="text-xs">
+            <Badge variant="outline" className="text-xs hover:scale-105 transition-transform">
               +{project.tags.length - 3}
             </Badge>
           )}
@@ -78,19 +85,20 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 
         {/* Tools */}
         <div className="flex flex-wrap gap-1">
-          {project.tools.slice(0, 3).map((tool) => (
-            <Badge 
-              key={tool} 
+          {project.tools.slice(0, 3).map((tool, index) => (
+            <Badge
+              key={tool}
               className={cn(
-                "text-xs font-medium border-0",
+                "text-xs font-medium border-0 hover:scale-105 transition-all duration-200",
                 toolColors[tool] || "bg-muted text-muted-foreground"
               )}
+              style={{ transitionDelay: `${index * 50}ms` }}
             >
               {tool}
             </Badge>
           ))}
           {project.tools.length > 3 && (
-            <Badge variant="outline" className="text-xs">
+            <Badge variant="outline" className="text-xs hover:scale-105 transition-transform">
               +{project.tools.length - 3}
             </Badge>
           )}
@@ -109,21 +117,21 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         {/* Action */}
         <div className="flex items-center justify-between pt-2">
           <Link to={`/projects/${project.id}`}>
-            <Button 
-              size="sm" 
-              className="group/btn bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
+            <Button
+              size="sm"
+              className="group/btn bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-soft hover:shadow-medium transition-all duration-300"
             >
               View Project
-              <ExternalLink className="h-3 w-3 ml-2 group-hover/btn:translate-x-0.5 transition-transform" />
+              <ExternalLink className="h-3 w-3 ml-2 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
             </Button>
           </Link>
-          
+
           {project.video && (
-            <a 
+            <a
               href={project.video.fallbackUrl || project.video.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
             >
               <Play className="h-4 w-4" />
               <span className="sr-only">Watch video</span>
