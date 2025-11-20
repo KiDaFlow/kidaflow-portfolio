@@ -335,6 +335,31 @@ export const projects: Project[] = [
     ],
     date: "2025-01",
     featured: true
+  },
+  {
+    id: "ai-bookkeeping-automation",
+    title: "How We Automated Bookkeeping for an Accountant with AI",
+    shortSummary: "We built a complete AI bookkeeping automation system that transforms raw financial data into fully branded, client-ready reports in minutes. This solution eliminates manual report creation, ensures data accuracy, and provides accountants with consistent, professional presentations every time.",
+    longDescription: "This automation integrates Airtable, Make.com, Google Sheets, Google Slides, and OpenAI to streamline financial reporting. The system:\n\n- Pulls raw transaction data from multiple sources (e.g., Square, QuickBooks, Google Sheets)\n- Validates data mappings in Airtable to prevent report errors\n- Analyzes CSV files and extracts financial metrics using AI\n- Automatically generates branded reports in Google Slides\n- Adds charts, visuals, and client logos\n- Exports finished PDFs and emails them directly to clients\n- Logs all completed reports for transparency\n\nThis project cut manual reporting time from **2–3 hours to just minutes**, completely eliminating human error and standardizing deliverables for accounting firms and financial consultants.",
+    tags: ["AI Automation", "Bookkeeping", "Financial Reporting", "Data Validation"],
+    tools: ["Airtable", "Make", "OpenAI", "Google Sheets", "Google Slides"],
+    video: {
+      type: "youtube",
+      url: "https://youtu.be/NeDPUt67ZyQ",
+      fallbackUrl: "https://youtu.be/NeDPUt67ZyQ"
+    },
+    screenshots: [],
+    outcomes: [
+      "Pulls transaction data from Square, QuickBooks, and Google Sheets automatically",
+      "Validates data mappings in Airtable to prevent errors before processing",
+      "Extracts financial metrics using AI-powered CSV analysis",
+      "Generates branded Google Slides reports with charts, visuals, and client logos",
+      "Exports PDFs and emails them directly to clients",
+      "Reduced manual reporting time from 2–3 hours to minutes",
+      "Eliminated human error and standardized deliverables"
+    ],
+    date: "2025-01",
+    featured: true
   }
 ];
 
