@@ -91,20 +91,6 @@ export const projects: Project[] = [
     screenshots: []
   },
   {
-    id: "upwork-discord-alerts",
-    title: "Upwork → Discord Job Alerts (AI Video niche)",
-    shortSummary: "Hourly Upwork scraping with duplicate filtering and relevance checks; instant Discord notifications for target roles.",
-    longDescription: "Never miss relevant Upwork opportunities with automated job monitoring and instant Discord alerts.\n\nTargets AI video ad editing and related tasks through Upwork API, runs hourly scans, filters out duplicates and irrelevant posts, then delivers clean, ready-to-review job briefs directly to Discord channels. Perfect for freelancers and agencies who want first-mover advantage on high-value projects.",
-    tags: ["Ops", "Notifications", "Lead Gen"],
-    tools: ["Upwork API", "Discord", "n8n/AnyTask"],
-    video: {
-      type: "loom",
-      url: "https://www.loom.com/share/8d483d0afdcb47ada737c48848ef8e63",
-      fallbackUrl: "https://www.loom.com/share/8d483d0afdcb47ada737c48848ef8e63"
-    },
-    screenshots: []
-  },
-  {
     id: "automated-proposals",
     title: "Automated Proposals for Coaches/Consultants/Sales",
     shortSummary: "Monday CRM stages trigger OpenAI-crafted proposals sent via PandaDoc for faster, on-brand closers.",
