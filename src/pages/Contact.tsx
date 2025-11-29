@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,49 +8,56 @@ import { Label } from "@/components/ui/label";
 import { Mail, Phone, Clock, CheckCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
+// ============================================
+// Contact Page Component
+// Uses EmailJS for form submissions
+// ============================================
+
 const Contact = () => {
+  // Form reference for EmailJS
+  const formRef = useRef<HTMLFormElement>(null);
+  
+  // Loading state for submit button
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Success state to show confirmation
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // ============================================
+  // Handle form submission using EmailJS
+  // ============================================
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const formData = new FormData(e.currentTarget);
-      const data = {
-        firstName: formData.get('firstName') as string,
-        lastName: formData.get('lastName') as string,
-        email: formData.get('email') as string,
-        company: formData.get('company') as string,
-        phone: formData.get('phone') as string,
-        projectType: formData.get('projectType') as string,
-        message: formData.get('message') as string,
-        budget: formData.get('budget') as string,
-      };
+      // Send form data using EmailJS
+      // Service ID, Template ID, and Public Key are configured for your account
+      await emailjs.sendForm(
+        "service_xgqr1nh",    // Your EmailJS Service ID
+        "template_5bbzb0h",   // Your EmailJS Template ID
+        formRef.current!,
+        "LS9IHnXeHB-U21BwQ"   // Your EmailJS Public Key
+      );
 
-      const response = await fetch('https://enjgikxatnmofnqecwer.supabase.co/functions/v1/send-contact-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVuamdpa3hhdG5tb2ZucWVjd2VyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjcxNzI0ODYsImV4cCI6MjA0Mjc0ODQ4Nn0.uj9SQHZvIIhRkXD6iZTaRIL3mJHtKLn6y0yrAhxvV8w'}`,
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-
+      // Show success state
       setIsSubmitted(true);
+      
+      // Clear the form
+      formRef.current?.reset();
+      
+      // Show success toast
       toast({
         title: "Message sent successfully!",
         description: "We'll get back to you within 24 hours.",
       });
     } catch (error) {
-      console.error('Error sending message:', error);
+      // Log error for debugging
+      console.error("EmailJS Error:", error);
+      
+      // Show error toast
       toast({
-        title: "Error sending message",
+        title: "Failed to send message",
         description: "Please try again or contact us directly.",
         variant: "destructive",
       });
@@ -58,6 +66,9 @@ const Contact = () => {
     }
   };
 
+  // ============================================
+  // Success Confirmation Screen
+  // ============================================
   if (isSubmitted) {
     return (
       <div className="min-h-screen py-20">
@@ -84,10 +95,13 @@ const Contact = () => {
     );
   }
 
+  // ============================================
+  // Main Contact Page Layout
+  // ============================================
   return (
     <div className="min-h-screen py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        {/* Header */}
+        {/* Page Header */}
         <div className="text-center space-y-6 mb-16">
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground">
             Get In Touch
@@ -98,13 +112,15 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Information */}
+          {/* Contact Information Sidebar */}
           <div className="space-y-6">
             <h2 className="font-heading text-2xl font-bold text-foreground">
               Let's Connect
             </h2>
             
+            {/* Contact Details */}
             <div className="space-y-4">
+              {/* Email */}
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Mail className="h-5 w-5 text-primary" />
@@ -120,6 +136,7 @@ const Contact = () => {
                 </div>
               </div>
 
+              {/* Phone */}
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Phone className="h-5 w-5 text-primary" />
@@ -135,6 +152,7 @@ const Contact = () => {
                 </div>
               </div>
 
+              {/* Response Time */}
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Clock className="h-5 w-5 text-primary" />
@@ -148,7 +166,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* What to Expect */}
+            {/* What to Expect Card */}
             <Card className="border-primary/20 bg-gradient-surface mt-8">
               <CardContent className="pt-6">
                 <h3 className="font-heading font-semibold text-foreground mb-4">
@@ -183,113 +201,57 @@ const Contact = () => {
                 <CardTitle className="font-heading text-2xl">Send Us a Message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name *</Label>
-                      <Input 
-                        id="firstName" 
-                        name="firstName"
-                        required
-                        placeholder="Your first name"
-                        className="bg-surface border-border focus:border-primary"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name *</Label>
-                      <Input 
-                        id="lastName" 
-                        name="lastName"
-                        required
-                        placeholder="Your last name"
-                        className="bg-surface border-border focus:border-primary"
-                      />
-                    </div>
+                {/* 
+                  EmailJS Form
+                  - Field names must match your EmailJS template variables
+                  - from_name: Sender's name
+                  - from_email: Sender's email
+                  - message: The message content
+                */}
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                  {/* Name Field */}
+                  <div className="space-y-2">
+                    <Label htmlFor="from_name">Name *</Label>
+                    <Input 
+                      id="from_name" 
+                      name="from_name"
+                      required
+                      placeholder="Your full name"
+                      className="w-full rounded-md bg-surface border-border focus:border-primary transition-colors duration-200"
+                    />
                   </div>
 
+                  {/* Email Field */}
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email *</Label>
+                    <Label htmlFor="from_email">Email *</Label>
                     <Input 
-                      id="email" 
-                      name="email"
+                      id="from_email" 
+                      name="from_email"
                       type="email"
                       required
-                      placeholder="your.email@company.com"
-                      className="bg-surface border-border focus:border-primary"
+                      placeholder="your.email@example.com"
+                      className="w-full rounded-md bg-surface border-border focus:border-primary transition-colors duration-200"
                     />
                   </div>
 
+                  {/* Message Field */}
                   <div className="space-y-2">
-                    <Label htmlFor="company">Company</Label>
-                    <Input 
-                      id="company" 
-                      name="company"
-                      placeholder="Your company name"
-                      className="bg-surface border-border focus:border-primary"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone</Label>
-                    <Input 
-                      id="phone" 
-                      name="phone"
-                      type="tel"
-                      placeholder="+1 (234) 567-890"
-                      className="bg-surface border-border focus:border-primary"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="projectType">Project Type</Label>
-                    <select 
-                      id="projectType"
-                      name="projectType"
-                      className="w-full px-3 py-2 bg-surface border border-border rounded-md focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    >
-                      <option value="">Select a project type</option>
-                      <option value="ai-voice">AI Voice Agent</option>
-                      <option value="workflow">Workflow Automation</option>
-                      <option value="crm">CRM Integration</option>
-                      <option value="content">Content Automation</option>
-                      <option value="booking">Booking System</option>
-                      <option value="document">Document Processing</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Project Description *</Label>
+                    <Label htmlFor="message">Message *</Label>
                     <Textarea 
                       id="message" 
                       name="message"
                       required
                       placeholder="Tell us about your project, current challenges, and what you'd like to automate..."
                       rows={6}
-                      className="bg-surface border-border focus:border-primary resize-none"
+                      className="w-full rounded-md bg-surface border-border focus:border-primary resize-none transition-colors duration-200"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="budget">Budget Range</Label>
-                    <select 
-                      id="budget"
-                      name="budget"
-                      className="w-full px-3 py-2 bg-surface border border-border rounded-md focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    >
-                      <option value="">Select budget range</option>
-                      <option value="under-5k">Under £5,000</option>
-                      <option value="5k-15k">£5,000 - £15,000</option>
-                      <option value="15k-30k">£15,000 - £30,000</option>
-                      <option value="30k-plus">£30,000+</option>
-                      <option value="discuss">Let's discuss</option>
-                    </select>
-                  </div>
-
+                  {/* Submit Button */}
                   <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
