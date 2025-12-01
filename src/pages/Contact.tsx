@@ -5,12 +5,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Mail, Phone, Clock, CheckCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 // ============================================
 // Contact Page Component
 // Uses EmailJS for form submissions
+// Combines all fields into a formatted message
 // ============================================
 
 const Contact = () => {
@@ -23,16 +31,68 @@ const Contact = () => {
   // Success state to show confirmation
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Form field states (for combining into message)
+  const [projectType, setProjectType] = useState("");
+  const [budgetRange, setBudgetRange] = useState("");
+
   // ============================================
   // Handle form submission using EmailJS
+  // Combines all fields into a formatted message
   // ============================================
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const formData = new FormData(formRef.current!);
+    
+    // Get individual field values
+    const firstName = formData.get("firstName") as string;
+    const lastName = formData.get("lastName") as string;
+    const email = formData.get("email") as string;
+    const company = formData.get("company") as string;
+    const phone = formData.get("phone") as string;
+    const projectDescription = formData.get("projectDescription") as string;
+
+    // Format all fields into a single message
+    const formattedMessage = `
+--- CONTACT FORM SUBMISSION ---
+
+NAME: ${firstName} ${lastName}
+EMAIL: ${email}
+COMPANY: ${company || "Not provided"}
+PHONE: ${phone || "Not provided"}
+
+PROJECT TYPE: ${projectType || "Not selected"}
+BUDGET RANGE: ${budgetRange || "Not selected"}
+
+PROJECT DESCRIPTION:
+${projectDescription}
+
+--- END OF SUBMISSION ---
+    `.trim();
+
+    // Create a hidden input with the formatted message
+    const hiddenInput = document.createElement("input");
+    hiddenInput.type = "hidden";
+    hiddenInput.name = "message";
+    hiddenInput.value = formattedMessage;
+    formRef.current!.appendChild(hiddenInput);
+
+    // Also set from_name and from_email for EmailJS template
+    const nameInput = document.createElement("input");
+    nameInput.type = "hidden";
+    nameInput.name = "from_name";
+    nameInput.value = `${firstName} ${lastName}`;
+    formRef.current!.appendChild(nameInput);
+
+    const emailInput = document.createElement("input");
+    emailInput.type = "hidden";
+    emailInput.name = "from_email";
+    emailInput.value = email;
+    formRef.current!.appendChild(emailInput);
+
     try {
       // Send form data using EmailJS
-      // Service ID, Template ID, and Public Key are configured for your account
       await emailjs.sendForm(
         "service_xgqr1nh",    // Your EmailJS Service ID
         "template_5bbzb0h",   // Your EmailJS Template ID
@@ -43,8 +103,10 @@ const Contact = () => {
       // Show success state
       setIsSubmitted(true);
       
-      // Clear the form
+      // Clear the form and states
       formRef.current?.reset();
+      setProjectType("");
+      setBudgetRange("");
       
       // Show success toast
       toast({
@@ -62,6 +124,8 @@ const Contact = () => {
         variant: "destructive",
       });
     } finally {
+      // Clean up hidden inputs
+      formRef.current?.querySelectorAll('input[type="hidden"]').forEach(el => el.remove());
       setIsSubmitting(false);
     }
   };
@@ -203,30 +267,39 @@ const Contact = () => {
               <CardContent>
                 {/* 
                   EmailJS Form
-                  - Field names must match your EmailJS template variables
-                  - from_name: Sender's name
-                  - from_email: Sender's email
-                  - message: The message content
+                  All fields are combined into a formatted message for EmailJS
                 */}
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name Field */}
-                  <div className="space-y-2">
-                    <Label htmlFor="from_name">Name *</Label>
-                    <Input 
-                      id="from_name" 
-                      name="from_name"
-                      required
-                      placeholder="Your full name"
-                      className="w-full rounded-md bg-surface border-border focus:border-primary transition-colors duration-200"
-                    />
+                  {/* Name Fields - Two columns */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName">First Name *</Label>
+                      <Input 
+                        id="firstName" 
+                        name="firstName"
+                        required
+                        placeholder="John"
+                        className="w-full rounded-md bg-surface border-border focus:border-primary transition-colors duration-200"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">Last Name *</Label>
+                      <Input 
+                        id="lastName" 
+                        name="lastName"
+                        required
+                        placeholder="Doe"
+                        className="w-full rounded-md bg-surface border-border focus:border-primary transition-colors duration-200"
+                      />
+                    </div>
                   </div>
 
                   {/* Email Field */}
                   <div className="space-y-2">
-                    <Label htmlFor="from_email">Email *</Label>
+                    <Label htmlFor="email">Email *</Label>
                     <Input 
-                      id="from_email" 
-                      name="from_email"
+                      id="email" 
+                      name="email"
                       type="email"
                       required
                       placeholder="your.email@example.com"
@@ -234,12 +307,72 @@ const Contact = () => {
                     />
                   </div>
 
-                  {/* Message Field */}
+                  {/* Company & Phone - Two columns */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="company">Company</Label>
+                      <Input 
+                        id="company" 
+                        name="company"
+                        placeholder="Your company name"
+                        className="w-full rounded-md bg-surface border-border focus:border-primary transition-colors duration-200"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone</Label>
+                      <Input 
+                        id="phone" 
+                        name="phone"
+                        type="tel"
+                        placeholder="+1 (555) 123-4567"
+                        className="w-full rounded-md bg-surface border-border focus:border-primary transition-colors duration-200"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Project Type Select */}
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="projectType">Project Type</Label>
+                    <Select value={projectType} onValueChange={setProjectType}>
+                      <SelectTrigger className="w-full rounded-md bg-surface border-border focus:border-primary">
+                        <SelectValue placeholder="Select a project type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="ai-automation">AI Automation</SelectItem>
+                        <SelectItem value="workflow-optimization">Workflow Optimization</SelectItem>
+                        <SelectItem value="chatbot-development">Chatbot Development</SelectItem>
+                        <SelectItem value="data-integration">Data Integration</SelectItem>
+                        <SelectItem value="custom-solution">Custom Solution</SelectItem>
+                        <SelectItem value="consultation">Consultation</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Budget Range Select */}
+                  <div className="space-y-2">
+                    <Label htmlFor="budgetRange">Budget Range</Label>
+                    <Select value={budgetRange} onValueChange={setBudgetRange}>
+                      <SelectTrigger className="w-full rounded-md bg-surface border-border focus:border-primary">
+                        <SelectValue placeholder="Select your budget range" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="under-1000">Under $1,000</SelectItem>
+                        <SelectItem value="1000-5000">$1,000 - $5,000</SelectItem>
+                        <SelectItem value="5000-10000">$5,000 - $10,000</SelectItem>
+                        <SelectItem value="10000-25000">$10,000 - $25,000</SelectItem>
+                        <SelectItem value="25000-plus">$25,000+</SelectItem>
+                        <SelectItem value="not-sure">Not sure yet</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Project Description Field */}
+                  <div className="space-y-2">
+                    <Label htmlFor="projectDescription">Project Description *</Label>
                     <Textarea 
-                      id="message" 
-                      name="message"
+                      id="projectDescription" 
+                      name="projectDescription"
                       required
                       placeholder="Tell us about your project, current challenges, and what you'd like to automate..."
                       rows={6}
